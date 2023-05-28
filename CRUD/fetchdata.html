@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <style>
+
+    </style>
+    </head>
+    <body>
+        <table border="2">
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>Company</th>
+                    <th>Brand</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                 $con = mysqli_connect("localhost","root","","mobile");
+                 $sql = "SELECT * FROM data";
+                 $fetch_data = mysqli_query($con,$sql);
+
+                 if(mysqli_num_rows($fetch_data)> 0)
+                 {
+                    foreach($fetch_data as $row)
+                    {
+                        ?>
+                        <tr>
+                            <td><?php echo $row['name']; ?></td>
+                        </tr>
+
+                        <?php
+
+
+                    }
+                }
+                    else{
+                        ?>
+                        <tr><td colspan="4">NO record Found</td></tr>
+                        <?php
+
+                    }
+                    ?>
+            </tbody>
+        </table>
+    </body>
+</html>
